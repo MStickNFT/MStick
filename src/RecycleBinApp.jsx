@@ -260,7 +260,7 @@ const RecycleBinApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
         </div>
       </DraggableWindow>
 
-      {/* TXT Modal — Secret WL Form */}
+      {/* TXT Modal — Feature Removed Notice */}
       {openTxt && (
         <DraggableWindow
           title="Notepad - SECRETS.TXT"
@@ -268,104 +268,23 @@ const RecycleBinApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
           onClose={() => setOpenTxt(false)}
           style={{ width: '480px', zIndex: 1002 }}
         >
-          <div style={{ flexGrow: 1, backgroundColor: '#fff', padding: '20px', fontFamily: 'var(--font-terminal)', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {spotCount === null ? (
-              <div style={{ textAlign: 'center', padding: '30px', color: '#555', fontSize: '15px' }}>Loading...</div>
-            ) : spotCount >= MAX_SPOTS ? (
-              // FULL — All spots claimed
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '20px 10px' }}>
-                <svg width="56" height="56" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="red" /><line x1="10" y1="10" x2="22" y2="22" stroke="#fff" strokeWidth="4" /><line x1="22" y1="10" x2="10" y2="22" stroke="#fff" strokeWidth="4" /></svg>
-                <p style={{ margin: 0, textAlign: 'center', fontWeight: 'bold', fontSize: '17px' }}>FATAL EXCEPTION 0x00000064</p>
-                <p style={{ margin: 0, textAlign: 'center', color: '#555', fontSize: '15px' }}>ALL 100 SPOTS HAVE BEEN CLAIMED.</p>
-                <p style={{ margin: 0, textAlign: 'center', color: '#555', fontSize: '14px' }}>Access denied. The early bird got the worm.</p>
-                <button className="win95-btn" style={{ padding: '6px 28px', fontSize: '14px', marginTop: '5px' }} onClick={() => setOpenTxt(false)}>OK</button>
-              </div>
-            ) : submitStatus === 'codeFull' ? (
-              // CODE FULL — 30 spots for this code used up
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '20px 10px' }}>
-                <svg width="56" height="56" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#FFA500" /><line x1="16" y1="8" x2="16" y2="20" stroke="#fff" strokeWidth="4" /><circle cx="16" cy="24" r="2" fill="#fff" /></svg>
-                <p style={{ margin: 0, textAlign: 'center', fontWeight: 'bold', fontSize: '17px' }}>ACCESS DENIED</p>
-                <p style={{ margin: 0, textAlign: 'center', color: '#555', fontSize: '15px' }}>This access code has reached its 30-spot limit.</p>
-                <p style={{ margin: 0, textAlign: 'center', color: '#555', fontSize: '14px' }}>Wait for the next drop.</p>
-                <button className="win95-btn" style={{ padding: '6px 28px', fontSize: '14px', marginTop: '5px' }} onClick={() => setSubmitStatus('idle')}>Back</button>
-              </div>
-            ) : submitStatus === 'alreadySubmitted' ? (
-              // ALREADY SUBMITTED
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', padding: '20px 10px' }}>
-                <svg width="56" height="56" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#FFA500" /><line x1="16" y1="8" x2="16" y2="20" stroke="#fff" strokeWidth="4" /><circle cx="16" cy="24" r="2" fill="#fff" /></svg>
-                <p style={{ margin: 0, textAlign: 'center', fontWeight: 'bold', fontSize: '17px' }}>ALREADY SUBMITTED</p>
-                <p style={{ margin: 0, textAlign: 'center', color: '#555', fontSize: '15px' }}>You have already submitted an application from this browser.</p>
-                <button className="win95-btn" style={{ padding: '6px 28px', fontSize: '14px', marginTop: '5px' }} onClick={() => setOpenTxt(false)}>Close</button>
-              </div>
-            ) : submitStatus === 'success' ? (
-              // SUCCESS
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', padding: '28px 10px', backgroundColor: '#fff' }}>
-                <svg width="64" height="64" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#008000" /><polyline points="8,16 13,22 24,10" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                <p style={{ margin: 0, fontWeight: 'bold', textAlign: 'center', fontSize: '22px', letterSpacing: '3px' }}>ACCESS GRANTED</p>
-                <p style={{ margin: 0, color: '#333', textAlign: 'center', fontSize: '17px' }}>Spot <strong>#{spotCount}</strong> / {CODE_LIMIT} secured.</p>
-                <button className="win95-btn" style={{ padding: '8px 36px', fontSize: '15px', marginTop: '4px' }} onClick={() => setOpenTxt(false)}>Close</button>
-              </div>
-            ) : (
-              // FORM
-              <>
-                <div style={{ borderBottom: '2px solid #ccc', paddingBottom: '10px' }}>
-                  <p style={{ margin: '0 0 4px 0', fontWeight: 'bold', fontSize: '16px' }}>// SECRETS.TXT</p>
-                  <p style={{ margin: 0, fontSize: '13px', color: '#555' }}>You found it. {CODE_LIMIT} spots max per code.</p>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '13px', color: '#555', letterSpacing: '1px' }}>X USERNAME</label>
-                  <input
-                    type="text"
-                    value={xUsername}
-                    onChange={(e) => setXUsername(e.target.value)}
-                    placeholder="@handle"
-                    style={{ fontFamily: 'var(--font-terminal)', fontSize: '15px', padding: '7px 10px', border: '2px inset #808080', backgroundColor: '#fff', width: '100%', boxSizing: 'border-box' }}
-                  />
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '13px', color: '#555', letterSpacing: '1px' }}>WALLET ADDRESS</label>
-                  <input
-                    type="text"
-                    value={walletAddress}
-                    onChange={(e) => setWalletAddress(e.target.value)}
-                    placeholder="0x..."
-                    style={{ fontFamily: 'var(--font-terminal)', fontSize: '15px', padding: '7px 10px', border: '2px inset #808080', backgroundColor: '#fff', width: '100%', boxSizing: 'border-box' }}
-                  />
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '13px', color: '#555', letterSpacing: '1px' }}>ACCESS CODE</label>
-                  <input
-                    type="text"
-                    value={accessCode}
-                    onChange={(e) => setAccessCode(e.target.value)}
-                    placeholder="#FFFFFF"
-                    style={{ fontFamily: 'var(--font-terminal)', fontSize: '15px', padding: '7px 10px', border: '2px inset #808080', backgroundColor: '#fff', width: '100%', boxSizing: 'border-box' }}
-                  />
-                </div>
-                {submitStatus === 'error' && (
-                  <p style={{ margin: 0, color: 'red', fontSize: '13px' }}>Something went wrong. Try again.</p>
-                )}
-                {submitStatus === 'codeInvalid' && (
-                  <p style={{ margin: 0, color: 'red', fontSize: '13px' }}>Invalid or expired access code.</p>
-                )}
-                {submitStatus === 'duplicate' && (
-                  <p style={{ margin: 0, color: 'red', fontSize: '13px', backgroundColor: '#ffe6e6', padding: '4px', border: '1px solid red' }}>
-                    Wallet or X Username has already been submitted.
-                  </p>
-                )}
-                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '4px' }}>
-                  <button className="win95-btn" style={{ padding: '6px 20px', fontSize: '14px' }} onClick={() => setOpenTxt(false)}>Cancel</button>
-                  <button
-                    className="win95-btn"
-                    style={{ padding: '6px 20px', fontWeight: 'bold', fontSize: '14px' }}
-                    onClick={handleWLSubmit}
-                    disabled={submitStatus === 'submitting' || !xUsername.trim() || !walletAddress.trim()}
-                  >
-                    {submitStatus === 'submitting' ? 'Submitting...' : 'Submit'}
-                  </button>
-                </div>
-              </>
-            )}
+          <div style={{ flexGrow: 1, backgroundColor: '#fff', padding: '20px', fontFamily: 'var(--font-terminal)', fontSize: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
+            <svg width="56" height="56" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="14" fill="#808080" />
+              <line x1="10" y1="10" x2="22" y2="22" stroke="#fff" strokeWidth="4" />
+              <line x1="22" y1="10" x2="10" y2="22" stroke="#fff" strokeWidth="4" />
+            </svg>
+            <p style={{ margin: 0, fontWeight: 'bold', fontSize: '17px', letterSpacing: '2px' }}>FEATURE REMOVED</p>
+            <p style={{ margin: 0, color: '#555', fontSize: '14px', lineHeight: '1.6' }}>
+              This feature has been disabled due to botting activity.
+            </p>
+            <p style={{ margin: 0, color: '#555', fontSize: '14px', lineHeight: '1.6' }}>
+              We removed it to protect real community members. Every guaranteed spot goes to a real person, not a script.
+            </p>
+            <p style={{ margin: 0, color: '#333', fontSize: '13px', fontStyle: 'italic' }}>
+              Stay active. Real supporters get rewarded.
+            </p>
+            <button className="win95-btn" style={{ padding: '6px 28px', fontSize: '14px', marginTop: '5px' }} onClick={() => setOpenTxt(false)}>Close</button>
           </div>
         </DraggableWindow>
       )}
