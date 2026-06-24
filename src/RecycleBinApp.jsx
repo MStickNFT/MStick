@@ -268,23 +268,23 @@ const RecycleBinApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
           onClose={() => setOpenTxt(false)}
           style={{ width: '480px', zIndex: 1002 }}
         >
-          <div style={{ flexGrow: 1, backgroundColor: '#fff', padding: '20px', fontFamily: 'var(--font-terminal)', fontSize: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
-            <svg width="56" height="56" viewBox="0 0 32 32">
+          <div style={{ flexGrow: 1, backgroundColor: '#fff', padding: '24px', fontFamily: 'var(--font-terminal)', fontSize: '17px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', textAlign: 'center' }}>
+            <svg width="64" height="64" viewBox="0 0 32 32">
               <circle cx="16" cy="16" r="14" fill="#808080" />
               <line x1="10" y1="10" x2="22" y2="22" stroke="#fff" strokeWidth="4" />
               <line x1="22" y1="10" x2="10" y2="22" stroke="#fff" strokeWidth="4" />
             </svg>
-            <p style={{ margin: 0, fontWeight: 'bold', fontSize: '17px', letterSpacing: '2px' }}>FEATURE REMOVED</p>
-            <p style={{ margin: 0, color: '#555', fontSize: '14px', lineHeight: '1.6' }}>
+            <p style={{ margin: 0, fontWeight: 'bold', fontSize: '22px', letterSpacing: '2px' }}>FEATURE REMOVED</p>
+            <p style={{ margin: 0, color: '#555', fontSize: '17px', lineHeight: '1.7' }}>
               This feature has been disabled due to botting activity.
             </p>
-            <p style={{ margin: 0, color: '#555', fontSize: '14px', lineHeight: '1.6' }}>
+            <p style={{ margin: 0, color: '#555', fontSize: '17px', lineHeight: '1.7' }}>
               We removed it to protect real community members. Every guaranteed spot goes to a real person, not a script.
             </p>
-            <p style={{ margin: 0, color: '#333', fontSize: '13px', fontStyle: 'italic' }}>
+            <p style={{ margin: 0, color: '#333', fontSize: '16px', fontStyle: 'italic' }}>
               Stay active. Real supporters get rewarded.
             </p>
-            <button className="win95-btn" style={{ padding: '6px 28px', fontSize: '14px', marginTop: '5px' }} onClick={() => setOpenTxt(false)}>Close</button>
+            <button className="win95-btn" style={{ padding: '8px 32px', fontSize: '16px', marginTop: '5px' }} onClick={() => setOpenTxt(false)}>Close</button>
           </div>
         </DraggableWindow>
       )}
