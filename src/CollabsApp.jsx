@@ -71,8 +71,8 @@ const CollabsApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
     : collabs.filter(c => c.status === filterStatus);
 
   // Stats calculation based on your actual lore/supply
-  const MAX_COLLAB_SPOTS = 1666;
-  const WEBSITE_SPOTS = 200;
+  const MAX_COLLAB_SPOTS = 1786;
+  const WEBSITE_SPOTS = 80;
   const X_SPOTS = 80;
   const TEAM_SPOTS = 39;
   
