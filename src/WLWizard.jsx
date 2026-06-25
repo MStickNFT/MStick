@@ -67,9 +67,8 @@ const WLWizard = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
 
       } catch (e) {
         console.error('WLWizard init error:', e);
-        // On error, fallback to closed state
         setRoundFull(true);
-        setRoundLabel('Error loading round');
+        setRoundLabel('Error loading round: ' + e.message);
       } finally {
         setLoading(false);
       }
@@ -160,7 +159,7 @@ const WLWizard = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
 
     } catch (error) {
       console.error('Submission error:', error);
-      setSubmitError('Failed to connect to server. Please try again later.');
+      setSubmitError('Error: ' + (error.message || 'Failed to connect. Check console for details.'));
       setSubmitting(false);
     }
   };
