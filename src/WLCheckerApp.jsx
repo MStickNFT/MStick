@@ -82,7 +82,7 @@ const WLCheckerApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
             style={{
               flex: 1,
               padding: '10px 14px',
-              fontSize: '14px',
+              fontSize: '18px',
               border: '2px solid #000',
               fontFamily: 'var(--font-terminal)',
               outline: 'none',
