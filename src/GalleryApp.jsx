@@ -7,6 +7,7 @@ import redImg from './assets/Red.jpg';
 import purpleImg from './assets/Purple.jpg';
 import darkGreenImg from './assets/Dark Green.png';
 import fuchsiaImg from './assets/Fuchsia.jpg';
+import navyBlueImg from './assets/Navy Blue.png';
 import errorSound from './assets/Error.mp3';
 
 const GalleryApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
@@ -22,8 +23,9 @@ const GalleryApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
     { id: 5, type: 'unlocked', name: 'BLUE_0000FF.BMP', color: '#0000FF', src: blueImg },
     { id: 6, type: 'unlocked', name: 'DARK_GREEN_008000.BMP', color: '#008000', src: darkGreenImg },
     { id: 7, type: 'unlocked', name: 'FUCHSIA_FF00FF.BMP', color: '#FF00FF', src: fuchsiaImg },
-    ...Array.from({ length: 9 }, (_, i) => ({
-      id: i + 8,
+    { id: 8, type: 'unlocked', name: 'NAVY_BLUE_000080.BMP', color: '#000080', src: navyBlueImg },
+    ...Array.from({ length: 8 }, (_, i) => ({
+      id: i + 9,
       type: 'locked',
       name: `CORRUPTED_${String(i + 1).padStart(2, '0')}.DAT`,
     }))
