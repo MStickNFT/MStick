@@ -38,8 +38,7 @@ const WLCheckerApp = ({ onClose, onMinimize, onMaximize, isMaximized }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleCheck();
   };
-
-  const sourceStyle = result ? (SOURCE_STYLES[result.source] || SOURCE_STYLES.Supporter) : null;
+  const sourceStyle = result ? (SOURCE_STYLES[result.source] || SOURCE_STYLES[result.category] || SOURCE_STYLES.Supporter) : null;
 
   return (
     <DraggableWindow
